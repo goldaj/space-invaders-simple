@@ -12,7 +12,9 @@ Recréation minimaliste d'une boucle de gameplay inspirée des jeux de tir arcad
 
 ## Développement
 
-Importer les sources avec Android Studio et configurer le SDK local. Ce prototype n'inclut pas nécessairement toute la chaîne moderne de build Gradle : il est conservé comme base de reprise et de refactorisation.
+Importer les sources avec Android Studio et configurer le SDK local. Le dépôt contient `settings.gradle`, `build.gradle` et `app/build.gradle` ; cette configuration déclare le plugin Android Gradle 8.6.1, Java 17 et compileSdk 35. Le wrapper Gradle n'est pas fourni dans l'état inspecté.
+
+**Stade :** prototype source de reprise et de refactorisation. La compilation, le gameplay sur appareil et la distribution ne sont pas validés par cette revue documentaire.
 
 ## Améliorations
 
