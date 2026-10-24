@@ -25,3 +25,24 @@ Importer les sources avec Android Studio et configurer le SDK local. Le dépôt 
 ## Compétences
 
 Java, API Android, UI interactive, boucle d'animation et développement de jeux simples.
+
+## Correction de gameplay (branche `chatgpt/review-20261024`)
+
+Les projectiles testent désormais **tout le trajet vertical parcouru pendant
+une image**, et plus uniquement leur position finale. Une balle rapide ne peut
+donc pas traverser une rangée d'ennemis ou le vaisseau du joueur par saut
+entre deux frames. En cas de deux ennemis traversés dans la même image,
+le plus proche du point de départ est touché. Les balles sortant de l'écran
+ne sont retirées qu'après les collisions.
+
+Test de géométrie indépendant de l'Android SDK, exécuté en JVM :
+
+```bash
+mkdir -p build/collision-tests
+javac -d build/collision-tests app/src/main/java/com/jason/spaceinvaders/CollisionMath.java tests/java/com/jason/spaceinvaders/CollisionMathTest.java
+java -cp build/collision-tests com.jason.spaceinvaders.CollisionMathTest
+```
+
+**Vérification observée :** 8 assertions JVM réussies sous Java 21.
+**Limite :** compilation APK et gameplay Android réel non testés (wrapper
+Gradle absent). Le correctif reste dans une PR brouillon non fusionnée.
