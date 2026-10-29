@@ -46,3 +46,7 @@ java -cp build/collision-tests com.jason.spaceinvaders.CollisionMathTest
 **Vérification observée :** 8 assertions JVM réussies sous Java 21.
 **Limite :** compilation APK et gameplay Android réel non testés (wrapper
 Gradle absent). Le correctif reste dans une PR brouillon non fusionnée.
+
+## Édition web jouable (2026-10-29)
+
+Une nouvelle édition HTML5 Canvas est disponible : **ouvrir `web/index.html` directement dans un navigateur**, même sans connexion. Vagues, bonus, boucliers, score, contrôles tactiles/souris/clavier et record local. Version autonome, sans modification du Java Android. Tests `node --test tests/*.test.cjs`. Voir [docs/WEB_EDITION.md](docs/WEB_EDITION.md).

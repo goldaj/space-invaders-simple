@@ -14,3 +14,7 @@
 - Distinguer `Utilisateur (verbatim)`, `Assistant (verbatim)` et `Résumé reconstruit (non verbatim)`. Donner date et heure uniquement si attestées, sinon noter qu'elles manquent.
 - Ne pas inventer d'échanges ou de tests. Si une transcription n'est pas accessible, demander son export plutôt que supposer son contenu.
 - Le dépôt peut être public : expurger secrets, données personnelles et contenus ne relevant pas du projet. Ne pas écraser les éléments historiques.
+
+## Édition web 2026-10-29
+
+Lire `docs/WEB_EDITION.md`. L'édition web Canvas possède un moteur indépendant `web/engine.js`, une UI `web/app.js`, tests Node et CI. Ne pas réécrire le code Java Android sans validation. Tester `node --test tests/*.test.cjs` et la prise en main tactile dans un navigateur.
