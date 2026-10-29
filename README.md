@@ -25,3 +25,7 @@ Importer les sources avec Android Studio et configurer le SDK local. Le dépôt 
 ## Compétences
 
 Java, API Android, UI interactive, boucle d'animation et développement de jeux simples.
+
+## Édition web jouable (2026-10-29)
+
+Une nouvelle édition HTML5 Canvas est disponible : **ouvrir `web/index.html` directement dans un navigateur**, même sans connexion. Vagues, bonus, boucliers, score, contrôles tactiles/souris/clavier et record local. Version autonome, sans modification du Java Android. Tests `node --test tests/*.test.cjs`. Voir [docs/WEB_EDITION.md](docs/WEB_EDITION.md).

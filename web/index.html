@@ -1,0 +1,15 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Space Invaders · Web</title>
+<style>:root{font:16px/1.5 system-ui,sans-serif;color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0d1026;color:#f5f6ff}
+main{max-width:780px;margin:auto;padding:24px 16px}h1{margin:0}p{color:#b9c5e1}.game{display:flex;justify-content:center}
+canvas{width:min(100%,480px);aspect-ratio:480/700;height:auto;background:#05091b;border:3px solid #50538e;border-radius:14px;touch-action:none}
+.controls{display:flex;gap:10px;justify-content:center;margin:16px 0;flex-wrap:wrap}
+button{font:inherit;padding:10px 18px;background:#37467c;border:1px solid #90a3f0;color:white;border-radius:10px;cursor:pointer}
+button:focus-visible{outline:3px solid gold}.stat{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+small{color:#c8cce2}#status{min-height:25px}
+</style><script defer src="./engine.js"></script><script defer src="./app.js"></script></head>
+<body><main><h1>Space Invaders · Web Edition</h1><p>Nouvelle édition jouable, inspirée du prototype Android. Déplace le vaisseau : le tir est automatique.</p>
+<div class="game"><canvas id="screen" width="480" height="700" tabindex="0" aria-label="Jeu Space Invaders : déplace le vaisseau avec la souris, le doigt ou les flèches du clavier"></canvas></div>
+<div class="controls"><button id="pause">Pause / Reprendre</button><button id="restart">Recommencer</button></div>
+<div class="stat"><span>Score : <strong id="score">0</strong></span><span>Vies : <strong id="lives">3</strong></span><span>Vague : <strong id="wave">1</strong></span><span>Record : <strong id="record">0</strong></span></div>
+<p id="status" role="status" aria-live="polite">Touches ← →, A/D, ou glisser le doigt ; P pour pause, R pour recommencer.</p>
+<small>Bonus : soin ou tir rapide. Boucliers destructibles. Score enregistré localement, sans serveur ni compte.</small></main></body></html>
