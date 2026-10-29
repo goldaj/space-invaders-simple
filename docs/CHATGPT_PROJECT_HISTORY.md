@@ -21,6 +21,15 @@
 
 Lorsque des exports ChatGPT authentiques sont fournis, les archiver par session, avec date ISO/fuseau, rôles et texte intégral en préservant leur ordre. Revoir toute donnée sensible avant de pousser sur GitHub. Après chaque modification, ajouter les échanges exacts nouvellement disponibles, puis actualiser les décisions et l'état vérifié.
 
+## Reprise du 24 octobre 2026 : vrais correctifs de collisions
+- **Utilisateur (verbatim, heure non disponible)** : « Est-ce qu'il y aurait d'autres choses à faire sur d'autres repo ? Notamment sur Jade ou n'importe lequel autre - juste ne touche pas au bot hyperliquid pour le reste de la journée (on pourra revenir dessus une autre fois). »
+- **Assistant (résumé non verbatim)** : inspection du gameplay Java,
+  correction des collisions manquées lorsque les tirs sautent une cible
+  entre deux images, avec tests JVM isolés. Aucune intervention sur un
+  dépôt de bot Hyperliquid ; branche et PR brouillon uniquement.
+- Validation : 8 assertions de géométrie exécutées localement sur Java 21,
+  sans SDK Android. Tests d'intégration Android restant à faire.
+
 ## 2026-10-29 : jeu web autonome
 
 Utilisateur (verbatim, date du fil, heure non certifiée) : « Je ne te demande pas de créer une tâche planifiée qui continue chaque jour. Je te demande de continuer maintenant en boucle et de ne pas t'arrêter sur juste 3 améliorations alors qu'il y a plus de 40 repo et plusieurs améliorations possibles par repo ».
