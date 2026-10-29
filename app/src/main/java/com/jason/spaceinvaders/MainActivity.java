@@ -208,6 +208,8 @@ public class MainActivity extends Activity {
             moveBullets(playerBullets, dt);
             moveBullets(enemyBullets, dt);
             handleCollisions();
+            pruneBullets(playerBullets);
+            pruneBullets(enemyBullets);
 
             boolean invaded = false;
             for (Enemy enemy : enemies) {
@@ -257,10 +259,16 @@ public class MainActivity extends Activity {
         }
 
         private void moveBullets(List<Bullet> bullets, float dt) {
+            for (Bullet bullet : bullets) {
+                bullet.previousY = bullet.y;
+                bullet.y += bullet.speedY * dt;
+            }
+        }
+
+        private void pruneBullets(List<Bullet> bullets) {
             Iterator<Bullet> it = bullets.iterator();
             while (it.hasNext()) {
                 Bullet bullet = it.next();
-                bullet.y += bullet.speedY * dt;
                 if (bullet.y < -40f || bullet.y > height + 40f) it.remove();
             }
         }
@@ -271,9 +279,12 @@ public class MainActivity extends Activity {
                 Bullet bullet = playerIt.next();
                 Enemy hit = null;
                 for (Enemy enemy : enemies) {
-                    if (enemy.bounds().contains(bullet.x, bullet.y)) {
-                        hit = enemy;
-                        break;
+                    if (CollisionMath.crossesRect(
+                            bullet.x, bullet.previousY, bullet.y,
+                            enemy.x, enemy.y, enemy.x + enemy.w, enemy.y + enemy.h)) {
+                        // A shot travels upward: the lowest intersected enemy is
+                        // the first one encountered, even if it crosses two rows.
+                        if (hit == null || enemy.y > hit.y) hit = enemy;
                     }
                 }
                 if (hit != null) {
@@ -288,7 +299,10 @@ public class MainActivity extends Activity {
             Iterator<Bullet> enemyIt = enemyBullets.iterator();
             while (enemyIt.hasNext()) {
                 Bullet bullet = enemyIt.next();
-                if (playerBounds.contains(bullet.x, bullet.y)) {
+                if (CollisionMath.crossesRect(
+                        bullet.x, bullet.previousY, bullet.y,
+                        playerBounds.left, playerBounds.top,
+                        playerBounds.right, playerBounds.bottom)) {
                     enemyIt.remove();
                     loseLife();
                     break;
@@ -440,12 +454,14 @@ public class MainActivity extends Activity {
         private static class Bullet {
             float x;
             float y;
+            float previousY;
             float speedY;
             boolean enemy;
 
             Bullet(float x, float y, float speedY, boolean enemy) {
                 this.x = x;
                 this.y = y;
+                this.previousY = y;
                 this.speedY = speedY;
                 this.enemy = enemy;
             }
